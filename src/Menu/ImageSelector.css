@@ -1,0 +1,46 @@
+.boxImage{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.boxImage:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.imageLogo{
+    width: 30px;
+    height: 24px;
+    padding-top: 19px;
+}
+
+.imageText{
+    width: 80px;
+    font-size: 18px;
+}
+
+.ImageMenu{
+    z-index: 10;
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: block;
+    padding: 0 8px 8px 32px;
+    border-left: solid black 1px;
+    background-color: white;
+}
+
+.imageBurgerTitle{
+    text-align: left;
+    font-size: 28px;
+    margin-top: -30px;
+}
+
+.imageBurgerCross{
+    font-size: 25px;
+    padding-right: 20px;
+    text-align: right;
+}
+

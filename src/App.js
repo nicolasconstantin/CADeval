@@ -2,6 +2,7 @@ import './App.css';
 import Header from "./Header/Header";
 import OpenSeadragonViewer from "./OpenSeadragon/OpenSeadragonViewer";
 import React, { useEffect, useState } from "react";
+import ImageSelector from "./Menu/ImageSelector";
 
 function App() {
 
@@ -15,12 +16,15 @@ function App() {
   return (
     <div className="App">
       <Header/>
-
+        <div className="pageContent">
             <div className="OSDViewer">
                 <OpenSeadragonViewer sentImage={image}/>
             </div>
-
+            <div className="MenuSelection">
+                <ImageSelector/>
+            </div>
         </div>
+    </div>
 
   );
 }
