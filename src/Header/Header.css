@@ -1,0 +1,15 @@
+.header{
+    background-color: #fafafa;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: lightgray 1px solid;
+    z-index: 10;
+}
+
+.MainTitle{
+    text-align: left;
+    font-weight: normal;
+    font-size: 20px;
+    padding-left: 15px;
+}
