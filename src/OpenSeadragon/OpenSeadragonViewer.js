@@ -4,12 +4,12 @@ import React, { useEffect, useState } from "react";
 
 function OpenSeadragonViewer(props) {
 
-    let image = props.image;
+    let image = props.sentImage;
     const [viewer, setViewer] = useState(null);
 
     useEffect(() => {
-        if (image && viewer) {
-            viewer.open(image.source);
+        if (image && viewer && image!==null) {
+            viewer.open(image);
         }
     }, [image]);
 
@@ -38,6 +38,7 @@ function OpenSeadragonViewer(props) {
     };
 
     return (
+    <>
         <div
             id="openSeaDragon"
             style={{
@@ -45,7 +46,13 @@ function OpenSeadragonViewer(props) {
                 width: "800px"
             }}
         >
+
         </div>
+
+        {image === null?
+            <p className="selectImageErrorMessage">Please select an image to display</p>:null
+        }
+    </>
     );
 }
 
