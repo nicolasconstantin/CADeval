@@ -21,7 +21,6 @@
 
 .ImageMenu{
     z-index: 10;
-    width: 20%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -30,6 +29,7 @@
     padding: 0 8px 8px 32px;
     border-left: solid black 1px;
     background-color: white;
+    transition: 0.3s;
 }
 
 .imageBurgerTitle{
@@ -42,5 +42,9 @@
     font-size: 25px;
     padding-right: 20px;
     text-align: right;
+}
+
+.imageBurgerCross:hover{
+    cursor: pointer;
 }
 

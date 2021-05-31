@@ -1,4 +1,12 @@
 .ItemList{
     list-style-type: none;
     text-align: left;
+    padding-top: 3px;
+    margin-left: -10%;
 }
+
+.ItemList:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+

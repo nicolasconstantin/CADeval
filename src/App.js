@@ -1,30 +1,28 @@
 import './App.css';
 import Header from "./Header/Header";
 import OpenSeadragonViewer from "./OpenSeadragon/OpenSeadragonViewer";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ImageSelector from "./Menu/ImageSelector";
 
+//This display all the element into the app
 function App() {
 
+    //the State for the image displayed by OpenSeadragon
     const [image, setImage] = useState(null);
 
 
-    useEffect(() => {
-        setImage("http://localhost/iipsrv/iipsrv.fcgi?DeepZoom=/data/patient_011_node_4.tif.dzi");
-    }, []);
-
-  return (
-    <div className="App">
-      <Header/>
-        <div className="pageContent">
-            <div className="OSDViewer">
-                <OpenSeadragonViewer sentImage={image}/>
-            </div>
-            <div className="MenuSelection">
-                <ImageSelector/>
+    return (
+        <div className="App">
+            <Header/>
+            <div className="pageContent">
+                <div className="OSDViewer">
+                    <OpenSeadragonViewer sentImage={image}/>
+                </div>
+                <div className="MenuSelection">
+                    <ImageSelector setImage={setImage}/>
+                </div>
             </div>
         </div>
-    </div>
 
   );
 }

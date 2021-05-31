@@ -2,17 +2,22 @@ import './OpenSeadragon.css';
 import OpenSeaDragon from "openseadragon";
 import React, { useEffect, useState } from "react";
 
+//The render of OpenSeadragon
 function OpenSeadragonViewer(props) {
 
+    //the setState for the image displayed by OpenSeadragon
     let image = props.sentImage;
+    //The viewer for display OpenSeadragon
     const [viewer, setViewer] = useState(null);
 
+    //open the viewer
     useEffect(() => {
-        if (image && viewer && image!==null) {
+        if (image && viewer) {
             viewer.open(image);
         }
     }, [image]);
 
+    //Init OpenSeadragon
     useEffect(() => {
         InitOpenseadragon();
         return () => {
@@ -20,6 +25,7 @@ function OpenSeadragonViewer(props) {
         };
     }, []);
 
+    //Set the default properties for OpenSeadragon
     const InitOpenseadragon = () => {
         viewer && viewer.destroy();
         setViewer(
@@ -37,6 +43,7 @@ function OpenSeadragonViewer(props) {
         );
     };
 
+    //Display the viewer and the message if no image is selected
     return (
     <>
         <div
