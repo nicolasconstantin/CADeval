@@ -10,42 +10,49 @@ function OpenSeadragonViewer(props) {
 
     //the setState for the image displayed by OpenSeadragon
     let image = props.sentImage;
+    //The cnn and the xai selected by the user
+    let cnn = props.cnn;
+    let xai = props.xai;
+
     //The viewer for display OpenSeadragon
     const [viewer, setViewer] = useState(null);
     //the annotations
     const [anno, setAnno] = useState(null);
     //the configuration for the annotation plugin
-    const configAnno = {allowEmpty:true, widgets: []}
+    const configAnno = {allowEmpty: true, widgets: []}
 
     //open the viewer
     useEffect(() => {
         if (image && viewer) {
             viewer.open(image);
-
             if (anno) {
                 anno.clearAnnotations();
+
+
+
             } else {
                 const annotorious = Annotorious(viewer, configAnno);
 
                 //call when a selection is created
-                annotorious.on('createSelection', async function() {
+                annotorious.on('createSelection', async function () {
                     //clear the previous selection
                     annotorious.clearAnnotations();
-                    //skip the comment part (not used for this project)
+                    //skip the comment part
                     annotorious.saveSelected();
                 });
 
-                //trigger when an annotation is created
-                annotorious.on('createAnnotation', function (annotation) {
-                    //sent request to python scripts
-                });
-                console.log('annotorious is', annotorious);
                 setAnno(annotorious);
             }
         }
 
-    }, [image, viewer]);
+    }, [image, viewer, cnn]);
 
+    useEffect(() => {
+        if(anno){
+            //trigger when an annotation is created
+            anno.on('createAnnotation', test);
+        }
+    }, [anno, cnn]);
 
     //Init OpenSeadragon
     useEffect(() => {
@@ -70,9 +77,15 @@ function OpenSeadragonViewer(props) {
         };
     }, []);
 
+    const test = () => {
+        console.log(cnn, xai);
+    }
+
     //Display the viewer and the message if no image is selected
     return (
         <>
+            <p className="hintAnnotorious">To select an area, hold the SHIFT key while clicking and dragging the
+                mouse</p>
             <div
                 id="openSeaDragon"
                 style={{

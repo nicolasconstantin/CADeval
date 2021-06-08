@@ -32,7 +32,7 @@ function GetFromFolder(props) {
     return (
         <ul className="test">
             {listOfPath.map((path) =>
-                <li className="ItemList" onClick={() => setImageDisplayed(path)}>{path}</li>
+                <li key={path} className="ItemList" onClick={() => setImageDisplayed(path)}>{path}</li>
             )}
         </ul>
     );
