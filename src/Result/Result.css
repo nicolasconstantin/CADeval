@@ -1,0 +1,13 @@
+.bold{
+    font-weight: bold;
+}
+
+.resultImg {
+    width: 30%;
+    margin-left: 35%;
+}
+
+.resultP {
+    padding: 0;
+    margin: 0;
+}

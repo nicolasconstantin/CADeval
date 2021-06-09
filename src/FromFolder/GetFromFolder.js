@@ -25,14 +25,16 @@ function GetFromFolder(props) {
 
     //When the user click on an image
     const setImageDisplayed = (path) => {
-        setImage("http://localhost/iipsrv/iipsrv.fcgi?DeepZoom=/data/" + path + ".dzi")
+        //set the state and the storage(persistency)
+        setImage("http://localhost/iipsrv/iipsrv.fcgi?DeepZoom=/data/" + path + ".dzi");
+        localStorage.setItem("image", "http://localhost/iipsrv/iipsrv.fcgi?DeepZoom=/data/" + path + ".dzi");
     }
 
     //Display the list of all images into an html list
     return (
         <ul className="test">
             {listOfPath.map((path) =>
-                <li className="ItemList" onClick={() => setImageDisplayed(path)}>{path}</li>
+                <li key={path} className="ItemList" onClick={() => setImageDisplayed(path)}>{path}</li>
             )}
         </ul>
     );

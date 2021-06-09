@@ -1,25 +1,25 @@
-.boxImage{
+.boxSelector{
     display: flex;
     justify-content: flex-end;
 }
 
-.boxImage:hover{
+.boxSelector:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
-.imageLogo{
+.selectorLogo{
     width: 30px;
     height: 24px;
     padding-top: 19px;
 }
 
-.imageText{
+.selectorText{
     width: 80px;
     font-size: 18px;
 }
 
-.ImageMenu{
+.selectorMenu{
     z-index: 10;
     height: 100%;
     position: fixed;
@@ -32,19 +32,29 @@
     transition: 0.3s;
 }
 
-.imageBurgerTitle{
+.selectorBurgerTitle{
     text-align: left;
     font-size: 28px;
     margin-top: -30px;
 }
 
-.imageBurgerCross{
+.selectorBurgerCross{
     font-size: 25px;
     padding-right: 20px;
     text-align: right;
 }
 
-.imageBurgerCross:hover{
+.selectorBurgerCross:hover{
     cursor: pointer;
+}
+
+.selectorForm{
+    text-align: left;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.selectorInput{
+    margin-bottom: 10px;
 }
 

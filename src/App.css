@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 .pageContent{
@@ -9,11 +9,31 @@
 }
 
 .OSDViewer{
-  padding-left: 2%;
+  padding-left: 1.5%;
   padding-top: 1%;
-  width: 70%;
+  width: 800px;
 }
 
 .MenuSelection{
-  width: 30%;
+  width: 20%;
+}
+
+.response{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonStart{
+  margin-top: 50px;
+  font-size: 18px;
+  padding: 10px 10px 10px 10px;
+  border: 2px solid #a7a7a7;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2), 0 6px 15px 0 rgba(0,0,0,0.19);
+  background-color: #e7e7e7;
+}
+
+.buttonStart:active{
+  background-color: #d7d7d7;
 }

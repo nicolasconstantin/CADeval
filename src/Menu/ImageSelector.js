@@ -1,5 +1,5 @@
-import './ImageSelector.css';
-import React, { useEffect, useState } from "react";
+import './selector.css';
+import React, { useState } from "react";
 import ImageLogo from "../Ressources/ImageLogo.png"
 import GetFromFolder from "../FromFolder/GetFromFolder";
 
@@ -13,14 +13,14 @@ function ImageSelector(props) {
 
     return (
         <>
-            <div className="boxImage" onClick={() => {setOpen(true)}}>
-                <img className="imageLogo" src={ImageLogo} alt="Logo"/>
-                <p className="imageText">Image</p>
+            <div className="boxSelector" onClick={() => {setOpen(true)}}>
+                <img className="selectorLogo" src={ImageLogo} alt="Logo"/>
+                <p className="selectorText">Image</p>
             </div>
 
-            <div className="ImageMenu" style={{width: open ? "18%" : "0px", visibility: open ? "visible" : "hidden"}}>
-                <p className="imageBurgerCross" onClick={() => {setOpen(false)}}>&#9932; </p>
-                <p className="imageBurgerTitle">Images</p>
+            <div className="selectorMenu" style={{width: open ? "18%" : "0px", visibility: open ? "visible" : "hidden"}}>
+                <p className="selectorBurgerCross" onClick={() => {setOpen(false)}}>&#9932; </p>
+                <p className="selectorBurgerTitle">Images</p>
                 <GetFromFolder setImage={setImage}/>
             </div>
 
