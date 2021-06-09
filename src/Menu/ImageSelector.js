@@ -1,4 +1,4 @@
-import './ImageSelector.css';
+import './selector.css';
 import React, { useState } from "react";
 import ImageLogo from "../Ressources/ImageLogo.png"
 import GetFromFolder from "../FromFolder/GetFromFolder";

@@ -21,18 +21,14 @@ function OpenSeadragonViewer(props) {
     //the configuration for the annotation plugin
     const configAnno = {allowEmpty: true, widgets: []}
 
-    //open the viewer
+    //open the viewer and manage the annotation plugin
     useEffect(() => {
         if (image && viewer) {
             viewer.open(image);
             if (anno) {
                 anno.clearAnnotations();
-
-
-
             } else {
                 const annotorious = Annotorious(viewer, configAnno);
-
                 //call when a selection is created
                 annotorious.on('createSelection', async function () {
                     //clear the previous selection
@@ -40,24 +36,15 @@ function OpenSeadragonViewer(props) {
                     //skip the comment part
                     annotorious.saveSelected();
                 });
-
                 setAnno(annotorious);
             }
         }
 
-    }, [image, viewer, cnn]);
-
-    useEffect(() => {
-        if(anno){
-            //trigger when an annotation is created
-            anno.on('createAnnotation', test);
-        }
-    }, [anno, cnn]);
+    }, [image, viewer]);
 
     //Init OpenSeadragon
     useEffect(() => {
 
-        //InitOpenseadragon();
         const osd = OpenSeaDragon({
             id: "openSeaDragon",
             prefixUrl: "openseadragon-images/",
@@ -76,10 +63,6 @@ function OpenSeadragonViewer(props) {
             viewer && viewer.destroy();
         };
     }, []);
-
-    const test = () => {
-        console.log(cnn, xai);
-    }
 
     //Display the viewer and the message if no image is selected
     return (

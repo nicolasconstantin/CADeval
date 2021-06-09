@@ -1,4 +1,4 @@
-import './ImageSelector.css';
+import './selector.css';
 import React, {useState} from "react";
 import CnnLogo from "../Ressources/cnn.png"
 
@@ -7,8 +7,15 @@ function CnnSelector(props) {
 
     //The state to know if the burger is open or not
     const [open, setOpen] = useState(false);
-    //The setState for the cnn selection
+    //The state for the cnn selection
     let setCnn = props.setCnn;
+    let cnn = props.cnn;
+
+    //when the user click on a radio button
+    const clickForm = (model) => {
+        setCnn(model);
+        localStorage.setItem("cnn", model);
+    }
 
     return (
         <>
@@ -25,11 +32,11 @@ function CnnSelector(props) {
                 }}>&#9932; </p>
                 <p className="selectorBurgerTitle">CNN</p>
                 <form className="selectorForm">
-                    <input className="selectorInput" type="radio" id="model1" name="model" value="1" defaultChecked={true} onClick={() => setCnn(1)}/>
+                    <input className="selectorInput" type="radio" id="model1" name="model" value="1" defaultChecked={cnn === "Model1"} onClick={() => clickForm("Model1")}/>
                     <label htmlFor="model1">Model 1</label><br/>
-                    <input className="selectorInput" type="radio" id="model2" name="model" value="2" onClick={() => setCnn(2)}/>
+                    <input className="selectorInput" type="radio" id="model2" name="model" value="2" defaultChecked={cnn === "Model2"} onClick={() => clickForm("Model2")}/>
                     <label htmlFor="model2">Model 2</label><br/>
-                    <input className="selectorInput" type="radio" id="model3" name="model" value="3" onClick={() => setCnn(3)}/>
+                    <input className="selectorInput" type="radio" id="model3" name="model" value="3" defaultChecked={cnn === "Model3"} onClick={() => clickForm("Model3")}/>
                     <label htmlFor="model3">Model 3</label>
                 </form>
             </div>
