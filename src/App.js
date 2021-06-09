@@ -1,21 +1,22 @@
 import './App.css';
 import Header from "./Header/Header";
 import OpenSeadragonViewer from "./OpenSeadragon/OpenSeadragonViewer";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import ImageSelector from "./Menu/ImageSelector";
 import CnnSelector from "./Menu/CnnSelector";
 import XaiSelector from "./Menu/XaiSelector";
+import Result from "./Result/Result";
 
 //This display all the element into the app
 function App() {
 
     //If the local storage is empty for the cnn, set the storage to Model1 (display the first checkbox selected)
-    if(localStorage.getItem("cnn") === "None"){
+    if (localStorage.getItem("cnn") === "None") {
         localStorage.setItem("cnn", "Model1");
     }
 
     //If the local storage is empty for the xai, set the storage to none (display the first checkbox selected)
-    if(localStorage.getItem("xai") === "None"){
+    if (localStorage.getItem("xai") === "None") {
         localStorage.setItem("xai", "none");
     }
 
@@ -24,13 +25,32 @@ function App() {
     const [image, setImage] = useState(localStorage.getItem("image"));
     const [cnn, setCnn] = useState(localStorage.getItem("cnn"));
     const [xai, setXai] = useState(localStorage.getItem("xai"));
+    const [coordinates, setCoordinates] = useState([]);
+    const [displayButton, setDisplayButton] = useState(false);
+    const [alreadyClick, setAlreadyClick] = useState(false);
+
+    const onClickSend = () => {
+        if (!alreadyClick) {
+            setAlreadyClick(true);
+            console.log(coordinates.toString());
+            //Send http request with xai cnn image etc.
+        }
+    };
 
     return (
         <div className="App">
             <Header/>
             <div className="pageContent">
                 <div className="OSDViewer">
-                    <OpenSeadragonViewer sentImage={image} cnn={cnn} xai={xai}/>
+                    <OpenSeadragonViewer sentImage={image} setDisplayButton={setDisplayButton}
+                                         setCoordinates={setCoordinates}/>
+                </div>
+                <div className="response">
+                    <Result coordinates={coordinates} cnn={cnn} xai={xai} displayButton={displayButton}
+                            alreadyClick={alreadyClick}/>
+
+                    {displayButton ?
+                        <button className="buttonStart" onClick={onClickSend}>{alreadyClick? "Please wait...": "Start computation"}</button> : null}
                 </div>
                 <div className="MenuSelection">
                     <ImageSelector setImage={setImage}/>
@@ -40,7 +60,7 @@ function App() {
             </div>
         </div>
 
-  );
+    );
 }
 
 export default App;

@@ -8,11 +8,10 @@ import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
 //The render of OpenSeadragon
 function OpenSeadragonViewer(props) {
 
-    //the setState for the image displayed by OpenSeadragon
+    //the setState for the image displayed by OpenSeadragon, the setDisplay and the setCoordonates
     let image = props.sentImage;
-    //The cnn and the xai selected by the user
-    let cnn = props.cnn;
-    let xai = props.xai;
+    let setDisplayButton = props.setDisplayButton;
+    let setCoordinates = props.setCoordinates;
 
     //The viewer for display OpenSeadragon
     const [viewer, setViewer] = useState(null);
@@ -20,6 +19,7 @@ function OpenSeadragonViewer(props) {
     const [anno, setAnno] = useState(null);
     //the configuration for the annotation plugin
     const configAnno = {allowEmpty: true, widgets: []}
+
 
     //open the viewer and manage the annotation plugin
     useEffect(() => {
@@ -30,11 +30,24 @@ function OpenSeadragonViewer(props) {
             } else {
                 const annotorious = Annotorious(viewer, configAnno);
                 //call when a selection is created
-                annotorious.on('createSelection', async function () {
+                annotorious.on('createSelection', async function (annotation) {
                     //clear the previous selection
                     annotorious.clearAnnotations();
                     //skip the comment part
                     annotorious.saveSelected();
+                    //display the button
+                    setDisplayButton(true);
+
+                    //get the coordonates of the region selected and transform them into int
+                    //in the annotation, the index 2 and 3 are the size of the box.
+                    //I need coordonates of the opposite corner, so I must compute it.
+                    let coordinates = annotation.target.selector.value.substring(11).split(",");
+                    coordinates[0] = parseInt(coordinates[0], 10);
+                    coordinates[1] = parseInt(coordinates[1], 10);
+                    coordinates[2] = parseInt(coordinates[0], 10) + parseInt(coordinates[2], 10);
+                    coordinates[3] = parseInt(coordinates[1], 10) + parseInt(coordinates[3], 10);
+                    //Set the state with the coordinates
+                    setCoordinates(coordinates);
                 });
                 setAnno(annotorious);
             }
