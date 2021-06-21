@@ -25,7 +25,8 @@
 }
 
 .buttonStart{
-  margin-top: 50px;
+  width: 70%;
+  margin-left: 15%;
   font-size: 18px;
   padding: 10px 10px 10px 10px;
   border: 2px solid #a7a7a7;
