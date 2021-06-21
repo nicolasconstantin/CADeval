@@ -24,7 +24,9 @@ function App() {
     //the State for the image displayed by OpenSeadragon, the cnn and the xai choosen by the user
     const [image, setImage] = useState(localStorage.getItem("image"));
     const [cnn, setCnn] = useState(localStorage.getItem("cnn"));
+    const [sendCnn, setSendCnn] = useState(null);
     const [xai, setXai] = useState(localStorage.getItem("xai"));
+    const [sendXai, setSendXai] = useState(null);
     const [coordinates, setCoordinates] = useState([]);
     const [displayButton, setDisplayButton] = useState(false);
     const [alreadyClick, setAlreadyClick] = useState(false);
@@ -33,7 +35,8 @@ function App() {
         if (!alreadyClick) {
             setAlreadyClick(true);
             console.log(coordinates.toString());
-            //Send http request with xai cnn image etc.
+            setSendCnn(cnn);
+            setSendXai(xai);
         }
     };
 
@@ -46,8 +49,8 @@ function App() {
                                          setCoordinates={setCoordinates}/>
                 </div>
                 <div className="response">
-                    <Result coordinates={coordinates} cnn={cnn} xai={xai} displayButton={displayButton}
-                            alreadyClick={alreadyClick}/>
+                    <Result coordinates={coordinates} cnn={sendCnn} xai={sendXai} displayButton={displayButton}
+                            alreadyClick={alreadyClick} setAlreadyClick={setAlreadyClick}/>
 
                     {displayButton ?
                         <button className="buttonStart" onClick={onClickSend}>{alreadyClick? "Please wait...": "Start computation"}</button> : null}

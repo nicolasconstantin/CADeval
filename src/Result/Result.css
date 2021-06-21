@@ -2,12 +2,25 @@
     font-weight: bold;
 }
 
-.resultImg {
+.originalZone{
     width: 30%;
     margin-left: 35%;
+}
+
+.resultImg {
+    width: 100%;
 }
 
 .resultP {
     padding: 0;
     margin: 0;
+}
+
+.contentResult{
+    display: flex;
+    justify-content: space-between;
+}
+
+.singleResult{
+    width: 50%;
 }
