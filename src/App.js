@@ -30,13 +30,35 @@ function App() {
     const [coordinates, setCoordinates] = useState([]);
     const [displayButton, setDisplayButton] = useState(false);
     const [alreadyClick, setAlreadyClick] = useState(false);
+    const [responseReady, setResponseReady] = useState(false);
+    const [imagePath, setImagePath] = useState(localStorage.getItem("imagePath"));
+    const [folderPath, setFolderPath] = useState(localStorage.getItem("folderPath"));
+    const [result, setResult] = useState(localStorage.getItem("result"));
 
     const onClickSend = () => {
         if (!alreadyClick) {
+
+            //set the state to "in process"
+            setResponseReady(false);
             setAlreadyClick(true);
-            console.log(coordinates.toString());
+
+            //set the cnn and the xai for the response
             setSendCnn(cnn);
             setSendXai(xai);
+
+            //send http request and catch the response
+
+            //set the imagePath and the result in the state and in the localStorage
+            setImagePath("patch_800-110.png");
+            localStorage.setItem("imagePath", "patch_800-110.png");
+            setFolderPath("1623850982.1658227");
+            localStorage.setItem("folderPath", "1623850982.1658227");
+            setResult("0.9894134307832658");
+            localStorage.setItem("result", "0.9894134307832658");
+
+            //set the state to "finished compute response"
+            setAlreadyClick(false);
+            setResponseReady(true);
         }
     };
 
@@ -50,7 +72,7 @@ function App() {
                 </div>
                 <div className="response">
                     <Result coordinates={coordinates} cnn={sendCnn} xai={sendXai} displayButton={displayButton}
-                            alreadyClick={alreadyClick} setAlreadyClick={setAlreadyClick}/>
+                            responseReady={responseReady} imagePath={imagePath} folderPath={folderPath} result={result}/>
 
                     {displayButton ?
                         <button className="buttonStart" onClick={onClickSend}>{alreadyClick? "Please wait...": "Start computation"}</button> : null}
