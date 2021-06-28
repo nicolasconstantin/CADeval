@@ -9,17 +9,17 @@
 }
 
 .OSDViewer{
-  padding-left: 1.5%;
+  padding-left: 1%;
   padding-top: 1%;
   width: 800px;
 }
 
 .MenuSelection{
-  width: 20%;
+  width: 10%;
 }
 
 .response{
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }

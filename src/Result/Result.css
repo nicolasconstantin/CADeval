@@ -3,8 +3,8 @@
 }
 
 .originalZone{
-    width: 30%;
-    margin-left: 35%;
+    width: 55%;
+    margin-bottom: 29px;
 }
 
 .resultImg {
@@ -14,6 +14,16 @@
 .resultP {
     padding: 0;
     margin: 0;
+
+}
+
+.resultText{
+    padding-top: 28px;
+    padding-bottom: 46px;
+}
+
+.resultPOriginalZone{
+    margin-top: 0;
 }
 
 .contentResult{
@@ -23,5 +33,5 @@
 }
 
 .singleResult{
-    width: 50%;
+    width: 25%;
 }

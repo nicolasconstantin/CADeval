@@ -53,7 +53,7 @@ function App() {
             localStorage.setItem("imagePath", "patch_800-110.png");
             setFolderPath("1623850982.1658227");
             localStorage.setItem("folderPath", "1623850982.1658227");
-            setResult("0.9894134307832658");
+            setResult("0.9262903342927582");
             localStorage.setItem("result", "0.9894134307832658");
 
             //set the state to "finished compute response"
