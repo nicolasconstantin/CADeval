@@ -48,7 +48,7 @@ function App() {
 
             //send http request and catch the response
 
-            //set the imagePath and the result in the state and in the localStorage
+            //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
             setImagePath("patch_800-110.png");
             localStorage.setItem("imagePath", "patch_800-110.png");
             setFolderPath("1623850982.1658227");
