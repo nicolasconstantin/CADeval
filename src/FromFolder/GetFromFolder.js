@@ -19,6 +19,11 @@ function GetFromFolder(props) {
             images.forEach((image) => {
                 setListOfPath(oldArray => [...oldArray, image.substring(2,image.length)]);
             })
+
+
+            /*fetch('https://cb95959001d2.ngrok.io')
+                .then(response => console.log(response))
+                .then(data => console.log(data.total));*/
         }
         ReadFolder();
     }, []);
@@ -26,8 +31,9 @@ function GetFromFolder(props) {
     //When the user click on an image
     const setImageDisplayed = (path) => {
         //set the state and the storage(persistency)
-        setImage("http://localhost/iipsrv/iipsrv.fcgi?DeepZoom=/data/" + path + ".dzi");
-        localStorage.setItem("image", "http://localhost/iipsrv/iipsrv.fcgi?DeepZoom=/data/" + path + ".dzi");
+        setImage(process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
+        localStorage.setItem("image", process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
+        console.log(localStorage.getItem("image"));
     }
 
     //Display the list of all images into an html list
