@@ -32,9 +32,9 @@ function GetFromFolder(props) {
     //When the user click on an image
     const setImageDisplayed = (path) => {
         //set the state and the storage(persistency)
-        setImage(process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
-        localStorage.setItem("image", process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
-        console.log(process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
+        setImage(process.env.REACT_APP_IIP_URL +  path + ".dzi");
+        localStorage.setItem("image", process.env.REACT_APP_IIP_URL + path + ".dzi");
+        console.log(process.env.REACT_APP_IIP_URL + path + ".dzi");
     }
 
     //Display the list of all images into an html list

@@ -14,7 +14,7 @@ RUN yarn
 RUN yarn global add react-scripts
 
 # Copy app source
-COPY src /usr/src/app
+COPY . /usr/src/app
 
 # Run the build
 RUN yarn run build
