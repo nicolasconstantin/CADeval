@@ -11,19 +11,20 @@ function GetFromFolder(props) {
 
     //get the list of all .tif into a folder and put it into the state
     useEffect(() => {
-        function ReadFolder() {
-            //get the list of files in the folder
+        async function ReadFolder() {
+            /*//get the list of files in the folder
             let images = require.context('../Ressources/DataImages', false, /\.(tif)$/).keys();
 
             //add each name of images in the folder into the state
             images.forEach((image) => {
                 setListOfPath(oldArray => [...oldArray, image.substring(2,image.length)]);
-            })
+            })*/
 
+            let response = await fetch('https://cb95959001d2.ngrok.io');
+                //.then(response => setdata(response.json()));
 
-            /*fetch('https://cb95959001d2.ngrok.io')
-                .then(response => console.log(response))
-                .then(data => console.log(data.total));*/
+            setListOfPath(await response.json());
+
         }
         ReadFolder();
     }, []);
@@ -33,7 +34,7 @@ function GetFromFolder(props) {
         //set the state and the storage(persistency)
         setImage(process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
         localStorage.setItem("image", process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
-        console.log(localStorage.getItem("image"));
+        console.log(process.env.REACT_APP_IIP_URL + "/data/" + path + ".dzi");
     }
 
     //Display the list of all images into an html list

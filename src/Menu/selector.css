@@ -30,6 +30,7 @@
     border-left: solid black 1px;
     background-color: white;
     transition: 0.3s;
+    overflow: scroll;
 }
 
 .selectorBurgerTitle{
