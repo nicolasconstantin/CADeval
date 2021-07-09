@@ -72,8 +72,6 @@ function GetImages(props) {
                 null
             }
 
-            {console.log(listOfPath)}
-
         </>
     );
 }
