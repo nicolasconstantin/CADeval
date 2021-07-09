@@ -15,3 +15,8 @@
     font-size: 20px;
 }
 
+.CenterTitle:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+

@@ -10,7 +10,7 @@ function GetImages(props) {
     //State for the list of images
     const [listOfPath, setListOfPath] = useState([]);
     //const [centerSelected, setCenterSelected] = useState(localStorage.getItem("centerSelected"));
-    const [centerSelected, setCenterSelected] = useState("centre_0");
+    const [centerSelected, setCenterSelected] = useState(null);
 
     //get the list of all .tif into a folder and put it into the state
     useEffect(() => {
