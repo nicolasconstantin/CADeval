@@ -1,7 +1,7 @@
 import './selector.css';
 import React, { useState } from "react";
 import ImageLogo from "../Ressources/ImageLogo.png"
-import GetFromFolder from "../FromFolder/GetFromFolder";
+import GetImages from "../GetImages/GetImages";
 
 //This function display the button and the burger to select images
 function ImageSelector(props) {
@@ -19,9 +19,9 @@ function ImageSelector(props) {
             </div>
 
             <div className="selectorMenu" style={{width: open ? "18%" : "0px", visibility: open ? "visible" : "hidden"}}>
-                <p className="selectorBurgerCross" onClick={() => {setOpen(false)}}>&#9932; </p>
+                <p className="selectorBurgerCross" onClick={() => {setOpen(false)}}>⛌</p>
                 <p className="selectorBurgerTitle">Images</p>
-                <GetFromFolder setImage={setImage}/>
+                <GetImages setImage={setImage}/>
             </div>
 
         </>
