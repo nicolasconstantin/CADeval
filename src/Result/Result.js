@@ -31,13 +31,23 @@ function Result(props) {
                         <p className="resultP">Selected xai: <span className="bold">{xai}</span></p>
                         <h2>Results</h2>
                         {xai === "none" ?
-                            <div className="singleResult">
-                                <p className="bold">Original zone</p>
-                                <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/${imagePath}`} alt="original zone"/>
-                                <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/patch_800-112.png`} alt="original zone"/>
-                                <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/patch_800-114.png`} alt="original zone"/>
-                                <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/patch_800-116.png`} alt="original zone"/>
-                            </div>
+                            (
+                                <div className="contentResult">
+                                    <div className="singleResult">
+                                        <p className="bold resultPOriginalZone">Original zone</p>
+                                        <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/${imagePath}`} alt="original zone"/>
+                                        <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/patch_800-112.png`} alt="original zone"/>
+                                        <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/patch_800-114.png`} alt="original zone"/>
+                                        <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/patch_800-116.png`} alt="original zone"/>
+                                    </div>
+                                    <div className="singleResult">
+                                        <p className="bold resultP">Prediction</p>
+                                        <p className="bold resultText">{result.substring(0,5)}</p>
+                                        <p className="bold resultText">0.989</p>
+                                        <p className="bold resultText">0.893</p>
+                                        <p className="bold resultText">0.792</p>
+                                    </div>
+                                </div>)
                             :
                             xai === "xai1" ?
                                 (
