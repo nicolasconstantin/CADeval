@@ -51,7 +51,12 @@ function App() {
             setResponseReady(false);
             setAlreadyClick(true);
 
-            let query = "https://1cb558bb6db2.eu.ngrok.io/" + coordinates[0]/128 + "," + coordinates[3]/128 + "," + coordinates[2]/128 + "," + coordinates[1]/128 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
+            let x0 = Math.round(coordinates[0]/128);
+            let y1 = Math.round(coordinates[3]/128);
+            let x1 = Math.round(coordinates[2]/128);
+            let y0 = Math.round(coordinates[1]/128);
+
+            let query = "https://1cb558bb6db2.eu.ngrok.io/" + x0 + "," + y1 + "," + x1 + "," + y0 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
 
             let response = await fetch(query);
 
