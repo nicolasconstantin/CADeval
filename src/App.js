@@ -35,18 +35,25 @@ function App() {
     const [folderPath, setFolderPath] = useState(localStorage.getItem("folderPath"));
     const [result, setResult] = useState(localStorage.getItem("result"));
 
-    const onClickSend = () => {
+    const onClickSend = async () => {
         if (!alreadyClick) {
 
-            //set the state to "in process"
-            setResponseReady(false);
-            setAlreadyClick(true);
+
 
             //set the cnn and the xai for the response
             setSendCnn(cnn);
             setSendXai(xai);
 
             //send http request and catch the response
+
+            //set the state to "in process"
+            setResponseReady(false);
+            setAlreadyClick(true);
+
+            let response = await fetch('localhost:5008/170,825,200,800/patient_012_node_0.tif/model1/xai1/');
+
+            let test = await response.json();
+
 
             //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
             setImagePath("patch_800-110.png");
