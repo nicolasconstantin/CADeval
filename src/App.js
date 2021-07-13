@@ -50,7 +50,7 @@ function App() {
             setResponseReady(false);
             setAlreadyClick(true);
 
-            let response = await fetch('localhost:5008/170,825,200,800/patient_012_node_0.tif/model1/xai1/');
+            let response = await fetch('http//127.0.0.1:5008/170,825,200,800/patient_012_node_0.tif/model1/xai1/');
 
             let test = await response.json();
 
