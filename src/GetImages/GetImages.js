@@ -9,8 +9,10 @@ function GetImages(props) {
     const setImage = props.setImage
     //State for the list of images
     const [listOfPath, setListOfPath] = useState([]);
-    //const [centerSelected, setCenterSelected] = useState(localStorage.getItem("centerSelected"));
+    //State for the center selected
     const [centerSelected, setCenterSelected] = useState(null);
+
+    const setSourceImage = props.setSourceimage;
 
     //get the list of all .tif into a folder and put it into the state
     useEffect(() => {
@@ -39,35 +41,35 @@ function GetImages(props) {
 
             <p className="CenterTitle" onClick={() => changeCenterSelected("centre_0")}>{centerSelected==="centre_0"? "▽" : "▷"} Center 0</p>
             {centerSelected==="centre_0"?
-                    <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath}/>
+                    <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath} setSourceImage={setSourceImage}/>
                 :
                     null
             }
 
             <p className="CenterTitle" onClick={() => changeCenterSelected("centre_1")}>{centerSelected==="centre_1"? "▽" : "▷"} Center 1</p>
             {centerSelected==="centre_1"?
-                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath}/>
+                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath} setSourceImage={setSourceImage}/>
                 :
                 null
             }
 
             <p className="CenterTitle" onClick={() => changeCenterSelected("centre_2")}>{centerSelected==="centre_2"? "▽" : "▷"} Center 2</p>
             {centerSelected==="centre_2"?
-                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath}/>
+                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath} setSourceImage={setSourceImage}/>
                 :
                 null
             }
 
             <p className="CenterTitle" onClick={() => changeCenterSelected("centre_3")}>{centerSelected==="centre_3"? "▽" : "▷"} Center 3</p>
             {centerSelected==="centre_3"?
-                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath}/>
+                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath} setSourceImage={setSourceImage}/>
                 :
                 null
             }
 
             <p className="CenterTitle" onClick={() => changeCenterSelected("centre_4")}>{centerSelected==="centre_4"? "▽" : "▷"} Center 4</p>
             {centerSelected==="centre_4"?
-                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath}/>
+                <ImageToDisplay center={centerSelected} setImage={setImage} listOfPath={listOfPath} setSourceImage={setSourceImage}/>
                 :
                 null
             }

@@ -34,6 +34,7 @@ function App() {
     const [imagePath, setImagePath] = useState(localStorage.getItem("imagePath"));
     const [folderPath, setFolderPath] = useState(localStorage.getItem("folderPath"));
     const [result, setResult] = useState(localStorage.getItem("result"));
+    const [sourceImage, setSourceImage] = useState(localStorage.getItem("sourceImage"));
 
     const onClickSend = async () => {
         if (!alreadyClick) {
@@ -50,11 +51,13 @@ function App() {
             setResponseReady(false);
             setAlreadyClick(true);
 
-            let response = await fetch('http://0.0.0.0:5008/170,825,200,800/patient_075_node_4.tif/model1/xai1/');
+            let query = "https://1cb558bb6db2.eu.ngrok.io/" + coordinates[0]/128 + "," + coordinates[3]/128 + "," + coordinates[2]/128 + "," + coordinates[1]/128 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
 
-            let test = await response.json();
+            let response = await fetch(query);
 
-            console.log(test);
+            let jsonResponse = await response.json();
+
+            console.log(jsonResponse);
 
             //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
             setImagePath("patch_800-110.png");
@@ -86,7 +89,7 @@ function App() {
                         <button className="buttonStart" onClick={onClickSend}>{alreadyClick? "Please wait...": "Start computation"}</button> : null}
                 </div>
                 <div className="MenuSelection">
-                    <ImageSelector setImage={setImage}/>
+                    <ImageSelector setImage={setImage} setSourceImage={setSourceImage}/>
                     <CnnSelector setCnn={setCnn} cnn={cnn}/>
                     <XaiSelector setXai={setXai} xai={xai}/>
                 </div>

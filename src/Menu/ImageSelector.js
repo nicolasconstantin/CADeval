@@ -5,11 +5,13 @@ import GetImages from "../GetImages/GetImages";
 
 //This function display the button and the burger to select images
 function ImageSelector(props) {
-
-    //the setState for the image displayed by OpenSeadragon
+    //The setState for the image displayed by OpenSeadragon
     const setImage = props.setImage;
     //The state to know if the burger is open or not
     const [open, setOpen] = useState(false);
+
+    const setSourceImage = props.setSourceImage;
+
 
     return (
         <>
@@ -21,7 +23,7 @@ function ImageSelector(props) {
             <div className="selectorMenu" style={{width: open ? "18%" : "0px", visibility: open ? "visible" : "hidden"}}>
                 <p className="selectorBurgerCross" onClick={() => {setOpen(false)}}>⛌</p>
                 <p className="selectorBurgerTitle">Images</p>
-                <GetImages setImage={setImage}/>
+                <GetImages setImage={setImage} setSourceimage={setSourceImage}/>
             </div>
 
         </>

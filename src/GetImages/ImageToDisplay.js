@@ -8,13 +8,16 @@ function ImageToDisplay(props) {
     const center = props.center;
     const setImage = props.setImage;
     const listOfPath = props.listOfPath;
+    const setSourceImage = props.setSourceImage;
 
     //When the user click on an image
     const setImageDisplayed = (path) => {
         //set the state and the storage(persistency)
         setImage(process.env.REACT_APP_IIP_URL + path + ".dzi");
         localStorage.setItem("image", process.env.REACT_APP_IIP_URL + path + ".dzi");
-        console.log(process.env.REACT_APP_IIP_URL + path + ".dzi");
+
+        setSourceImage(path);
+        localStorage.setItem("sourceImage", path);
     }
 
     //Display the list of all images into an html list

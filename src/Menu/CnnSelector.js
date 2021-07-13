@@ -32,11 +32,11 @@ function CnnSelector(props) {
                 }}>&#9932; </p>
                 <p className="selectorBurgerTitle">CNN</p>
                 <form className="selectorForm">
-                    <input className="selectorInput" type="radio" id="model1" name="model" value="1" defaultChecked={cnn === "Model1"} onClick={() => clickForm("Model1")}/>
+                    <input className="selectorInput" type="radio" id="model1" name="model" value="1" defaultChecked={cnn === "model1"} onClick={() => clickForm("model1")}/>
                     <label htmlFor="model1">Model 1</label><br/>
-                    <input className="selectorInput" type="radio" id="model2" name="model" value="2" defaultChecked={cnn === "Model2"} onClick={() => clickForm("Model2")}/>
+                    <input className="selectorInput" type="radio" id="model2" name="model" value="2" defaultChecked={cnn === "model2"} onClick={() => clickForm("model2")}/>
                     <label htmlFor="model2">Model 2</label><br/>
-                    <input className="selectorInput" type="radio" id="model3" name="model" value="3" defaultChecked={cnn === "Model3"} onClick={() => clickForm("Model3")}/>
+                    <input className="selectorInput" type="radio" id="model3" name="model" value="3" defaultChecked={cnn === "model3"} onClick={() => clickForm("model3")}/>
                     <label htmlFor="model3">Model 3</label>
                 </form>
             </div>
