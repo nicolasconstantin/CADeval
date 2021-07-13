@@ -50,10 +50,11 @@ function App() {
             setResponseReady(false);
             setAlreadyClick(true);
 
-            let response = await fetch('http://127.0.0.1:5008/170,825,200,800/patient_075_node_4.tif/model1/xai1/');
+            let response = await fetch('http://0.0.0.0:5008/170,825,200,800/patient_075_node_4.tif/model1/xai1/');
 
             let test = await response.json();
 
+            console.log(test);
 
             //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
             setImagePath("patch_800-110.png");
