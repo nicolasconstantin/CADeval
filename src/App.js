@@ -56,21 +56,21 @@ function App() {
             let x1 = Math.round(coordinates[2]/128);
             let y0 = Math.round(coordinates[1]/128);
 
-            let query = "https://1cb558bb6db2.eu.ngrok.io/" + x0 + "," + y1 + "," + x1 + "," + y0 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
+            //let query = "https://1cb558bb6db2.eu.ngrok.io/" + x0 + "," + y1 + "," + x1 + "," + y0 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
 
-            let response = await fetch(query);
+            //let response = await fetch(query);
 
-            let jsonResponse = await response.json();
+            //let jsonResponse = await response.json();
 
-            console.log(jsonResponse);
+            let jsonResponse = JSON.parse("[\"1623850982.1658227\",[\"patch_800-110.png\",\"patch_800-110.png\",\"patch_800-110.png\"],[\"0.95865163\", \"0.95865163\", \"0.95865163\"]]");
 
             //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
-            setImagePath("patch_800-110.png");
-            localStorage.setItem("imagePath", "patch_800-110.png");
-            setFolderPath("1623850982.1658227");
-            localStorage.setItem("folderPath", "1623850982.1658227");
-            setResult("0.9262903342927582");
-            localStorage.setItem("result", "0.9894134307832658");
+            setFolderPath(jsonResponse[0]);
+            localStorage.setItem("folderPath", jsonResponse[0]);
+            setImagePath(jsonResponse[1]);
+            localStorage.setItem("imagePath", jsonResponse[1]);
+            setResult(jsonResponse[2]);
+            localStorage.setItem("result", jsonResponse[2]);
 
             //set the state to "finished compute response"
             setAlreadyClick(false);
@@ -88,7 +88,7 @@ function App() {
                 </div>
                 <div className="response">
                     <Result coordinates={coordinates} cnn={sendCnn} xai={sendXai} displayButton={displayButton}
-                            responseReady={responseReady} imagePath={imagePath} folderPath={folderPath} result={result}/>
+                            responseReady={responseReady} imagePath={imagePath} folderPath={folderPath} result={result} sourceImage={sourceImage}/>
 
                     {displayButton ?
                         <button className="buttonStart" onClick={onClickSend}>{alreadyClick? "Please wait...": "Start computation"}</button> : null}
