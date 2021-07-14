@@ -44,7 +44,7 @@ function Result(props) {
                                     <div className="singleResult">
                                         <p className="bold resultP">Prediction</p>
                                         {result.map((number) =>
-                                            <p className="bold resultText">{number.substring(0,5)}</p>
+                                            <p className="bold resultText">{number}</p>
                                         )}
                                     </div>
                                 </div>)
@@ -73,7 +73,7 @@ function Result(props) {
                                         <div className="singleResult">
                                             <p className="bold resultP">Prediction</p>
                                             {result.map((number) =>
-                                                <p className="bold resultText">{number.substring(0,5)}</p>
+                                                <p className="bold resultText">{number}</p>
                                             )}
                                         </div>
                                     </div>)
@@ -101,7 +101,7 @@ function Result(props) {
                                         <div className="singleResult">
                                             <p className="bold resultP">Prediction</p>
                                             {result.map((number) =>
-                                                <p className="bold resultText">{number.substring(0,5)}</p>
+                                                <p className="bold resultText">{number}</p>
                                             )}
                                         </div>
                                     </div>
