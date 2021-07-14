@@ -56,13 +56,11 @@ function App() {
             let x1 = Math.round(coordinates[2]/128);
             let y0 = Math.round(coordinates[1]/128);
 
-            //let query = "https://1cb558bb6db2.eu.ngrok.io/" + x0 + "," + y1 + "," + x1 + "," + y0 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
+            let query = "https://1cb558bb6db2.eu.ngrok.io/" + x0 + "," + y1 + "," + x1 + "," + y0 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
 
-            //let response = await fetch(query);
+            let response = await fetch(query);
 
-            //let jsonResponse = await response.json();
-
-            let jsonResponse = JSON.parse("[\"1623850982.1658227\",[\"patch_800-110.png\",\"patch_800-110.png\",\"patch_800-110.png\"],[\"0.95865163\", \"0.95865163\", \"0.95865163\"]]");
+            let jsonResponse = await response.json();
 
             //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
             setFolderPath(jsonResponse[0]);
