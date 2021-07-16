@@ -13,6 +13,7 @@ function Result(props) {
     let imagePath = props.imagePath;
     let result = props.result;
     let sourceImage = props.sourceImage;
+    let error = props.error;
 
     return (
         <>
@@ -27,6 +28,7 @@ function Result(props) {
                 :
                 null}
             {responseReady ?
+                error === null ?
                 (
                     <>
                         <p className="resultP">Selected model: <span className="bold">{cnn}</span></p>
@@ -44,7 +46,7 @@ function Result(props) {
                                     <div className="singleResult">
                                         <p className="bold resultP">Prediction</p>
                                         {result.map((number) =>
-                                            <p className="bold resultText">{number}</p>
+                                            <p className="bold resultText">{parseFloat(number).toFixed(3)}</p>
                                         )}
                                     </div>
                                 </div>)
@@ -73,7 +75,7 @@ function Result(props) {
                                         <div className="singleResult">
                                             <p className="bold resultP">Prediction</p>
                                             {result.map((number) =>
-                                                <p className="bold resultText">{number}</p>
+                                                <p className="bold resultText">{parseFloat(number).toFixed(3)}</p>
                                             )}
                                         </div>
                                     </div>)
@@ -101,14 +103,15 @@ function Result(props) {
                                         <div className="singleResult">
                                             <p className="bold resultP">Prediction</p>
                                             {result.map((number) =>
-                                                <p className="bold resultText">{number}</p>
+                                                <p className="bold resultText">{parseFloat(number).toFixed(3)}</p>
                                             )}
                                         </div>
                                     </div>
                                 )}
                     </>)
                 :
-                null}
+                    <p className="ErrorMessage">{error}</p>
+            : null}
         </>
     );
 }

@@ -11,15 +11,20 @@
     width: 100%;
 }
 
+.testResult{
+    display: flex;
+    justify-content: flex-start;
+}
+
 .resultP {
     padding: 0;
     margin: 0;
-
 }
 
 .resultText{
-    padding-top: 28px;
-    padding-bottom: 46px;
+    padding-top: 26px;
+    padding-bottom: 50px;
+    width: 25%;
 }
 
 .resultPOriginalZone{
@@ -34,4 +39,9 @@
 
 .singleResult{
     width: 25%;
+}
+
+.ErrorMessage{
+    padding: 5%;
+    color: red;
 }

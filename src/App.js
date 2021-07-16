@@ -11,15 +11,14 @@ import Result from "./Result/Result";
 function App() {
 
     //If the local storage is empty for the cnn, set the storage to Model1 (display the first checkbox selected)
-    if (localStorage.getItem("cnn") === "None") {
-        localStorage.setItem("cnn", "Model1");
+    if (localStorage.getItem("cnn") === null) {
+        localStorage.setItem("cnn", "model1");
     }
 
     //If the local storage is empty for the xai, set the storage to none (display the first checkbox selected)
-    if (localStorage.getItem("xai") === "None") {
+    if (localStorage.getItem("xai") === null) {
         localStorage.setItem("xai", "none");
     }
-
 
     //the State for the image displayed by OpenSeadragon, the cnn and the xai choosen by the user
     const [image, setImage] = useState(localStorage.getItem("image"));
@@ -35,15 +34,16 @@ function App() {
     const [folderPath, setFolderPath] = useState(localStorage.getItem("folderPath"));
     const [result, setResult] = useState(localStorage.getItem("result"));
     const [sourceImage, setSourceImage] = useState(localStorage.getItem("sourceImage"));
+    const [error, setError] = useState(null);
 
     const onClickSend = async () => {
         if (!alreadyClick) {
-
-
-
             //set the cnn and the xai for the response
             setSendCnn(cnn);
             setSendXai(xai);
+
+            //reset error
+            setError(null);
 
             //send http request and catch the response
 
@@ -56,23 +56,40 @@ function App() {
             let x1 = Math.round(coordinates[2]/128);
             let y0 = Math.round(coordinates[1]/128);
 
-            let query = "https://1cb558bb6db2.eu.ngrok.io/" + x0 + "," + y1 + "," + x1 + "," + y0 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
+            if(x1-x0>=1 && x1-x0<156 && y1-y0>1 && y1-y0<156){
+                try{
+                    let query = "https://1cb558bb6db2.eu.ngrok.io/" + x0 + "," + y1 + "," + x1 + "," + y0 + "/" + sourceImage + "/" + cnn + "/" + xai + "/";
 
-            let response = await fetch(query);
+                    let response = await fetch(query)
 
-            let jsonResponse = await response.json();
+                    let jsonResponse = await response.json();
 
-            //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
-            setFolderPath(jsonResponse[0]);
-            localStorage.setItem("folderPath", jsonResponse[0]);
-            setImagePath(jsonResponse[1]);
-            localStorage.setItem("imagePath", jsonResponse[1]);
-            setResult(jsonResponse[2]);
-            localStorage.setItem("result", jsonResponse[2]);
+                    //set the imagePath and the result in the state and in the localStorage || RESULT OF REQUEST
+                    setFolderPath(jsonResponse[0]);
+                    localStorage.setItem("folderPath", jsonResponse[0]);
+                    setImagePath(jsonResponse[1]);
+                    localStorage.setItem("imagePath", jsonResponse[1]);
+                    setResult(jsonResponse[2]);
+                    localStorage.setItem("result", jsonResponse[2]);
+
+                    //Manage an empty response
+                    if(jsonResponse[1].length === 0){
+                        setError("No processable images were found by the CNN model. Please, try to select another area.");
+                    }
+
+                }catch (e) {
+                    setError("An error occurs during the model processing: " + e.toString());
+                    console.log(e);
+                }
+            }else {
+                setError("Your area is too small or too big (min height and width 64 pixels and max height and width 20 000 pixels).")
+            }
+
 
             //set the state to "finished compute response"
-            setAlreadyClick(false);
             setResponseReady(true);
+            setAlreadyClick(false);
+
         }
     };
 
@@ -85,8 +102,8 @@ function App() {
                                          setCoordinates={setCoordinates}/>
                 </div>
                 <div className="response">
-                    <Result coordinates={coordinates} cnn={sendCnn} xai={sendXai} displayButton={displayButton}
-                            responseReady={responseReady} imagePath={imagePath} folderPath={folderPath} result={result} sourceImage={sourceImage}/>
+                        <Result coordinates={coordinates} cnn={sendCnn} xai={sendXai} displayButton={displayButton}
+                            responseReady={responseReady} imagePath={imagePath} folderPath={folderPath} result={result} sourceImage={sourceImage} error={error}/>
 
                     {displayButton ?
                         <button className="buttonStart" onClick={onClickSend}>{alreadyClick? "Please wait...": "Start computation"}</button> : null}
