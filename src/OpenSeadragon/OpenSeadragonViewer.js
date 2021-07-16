@@ -49,6 +49,16 @@ function OpenSeadragonViewer(props) {
                     //Set the state with the coordinates
                     setCoordinates(coordinates);
                 });
+                annotorious.on('changeSelectionTarget', async function (annotation) {
+                    console.log(annotation);
+                    let coordinates = annotation.selector.value.substring(11).split(",");
+                    coordinates[0] = parseInt(coordinates[0], 10);
+                    coordinates[1] = parseInt(coordinates[1], 10);
+                    coordinates[2] = parseInt(coordinates[0], 10) + parseInt(coordinates[2], 10);
+                    coordinates[3] = parseInt(coordinates[1], 10) + parseInt(coordinates[3], 10);
+                    //Set the state with the coordinates
+                    setCoordinates(coordinates);
+                });
                 setAnno(annotorious);
             }
         }
