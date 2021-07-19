@@ -105,6 +105,12 @@ function App() {
                         <Result coordinates={coordinates} cnn={sendCnn} xai={sendXai} displayButton={displayButton}
                             responseReady={responseReady} imagePath={imagePath} folderPath={folderPath} result={result} sourceImage={sourceImage} error={error}/>
 
+                    {alreadyClick?
+                        <p>The computation has started, CNN model can take a moment to finish.</p>
+                        :
+                        null
+                    }
+
                     {displayButton ?
                         <button className="buttonStart" onClick={onClickSend}>{alreadyClick? "Please wait...": "Start computation"}</button> : null}
                 </div>

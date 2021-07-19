@@ -2,29 +2,41 @@
     font-weight: bold;
 }
 
+.resultCharacteristics{
+    padding: 0;
+    margin: 0;
+}
+
+.resultDiv{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 4%;
+    padding: 0;
+}
+
 .originalZone{
-    width: 55%;
-    margin-bottom: 29px;
+    width: 23%;
+    padding: 1%;
+    margin:0;
 }
 
 .resultImg {
-    width: 100%;
-}
-
-.testResult{
-    display: flex;
-    justify-content: flex-start;
+    width: 23%;
+    padding: 1%;
+    margin:0;
 }
 
 .resultP {
     padding: 0;
     margin: 0;
+    width: 25%;
+
 }
 
 .resultText{
-    padding-top: 26px;
-    padding-bottom: 50px;
+    padding-top: 7%;
     width: 25%;
+    height: auto;
 }
 
 .resultPOriginalZone{
