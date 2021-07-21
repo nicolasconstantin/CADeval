@@ -30,7 +30,7 @@ function OpenSeadragonViewer(props) {
             } else {
                 const annotorious = Annotorious(viewer, configAnno);
                 //call when a selection is created
-                annotorious.on('createSelection', async function (annotation) {
+                annotorious.on('createSelection', function (annotation) {
                     //clear the previous selection
                     annotorious.clearAnnotations();
                     //skip the comment part
@@ -49,7 +49,7 @@ function OpenSeadragonViewer(props) {
                     //Set the state with the coordinates
                     setCoordinates(coordinates);
                 });
-                annotorious.on('changeSelectionTarget', async function (annotation) {
+                annotorious.on('changeSelectionTarget', function (annotation) {
                     console.log(annotation);
                     let coordinates = annotation.selector.value.substring(11).split(",");
                     coordinates[0] = parseInt(coordinates[0], 10);

@@ -23,6 +23,7 @@ function Result(props) {
                         <h3>Characteristics</h3>
                         <p className="resultCharacteristics">Location on the WSI:
                             ({coordinates[0]},{coordinates[1]}-{coordinates[2]},{coordinates[3]})</p>
+                        <p className="resultCharacteristics">Width : {coordinates[2]-coordinates[0]} pixels - Height : {coordinates[3]-coordinates[1]} pixels</p>
                         <p className="resultCharacteristics">Image: {sourceImage.substring(0, sourceImage.length-4)}</p>
                     </>)
                 :

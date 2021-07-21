@@ -82,7 +82,7 @@ function App() {
                     console.log(e);
                 }
             }else {
-                setError("Your area is too small or too big (min height and width 64 pixels and max height and width 20 000 pixels).")
+                setError("Your area is too small or too big (min height and width 200 pixels and max height and width 20 000 pixels).")
             }
 
 
@@ -106,7 +106,7 @@ function App() {
                             responseReady={responseReady} imagePath={imagePath} folderPath={folderPath} result={result} sourceImage={sourceImage} error={error}/>
 
                     {alreadyClick?
-                        <p>The computation has started, CNN model can take a moment to finish.</p>
+                        <p>The computation has started, CNN model can take a moment to finish. Do not refresh the page please !</p>
                         :
                         null
                     }
