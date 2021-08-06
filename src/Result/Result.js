@@ -67,7 +67,7 @@ function Result(props) {
                                                 <div className="resultDiv" key={index}>
                                                     <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
                                                     <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/GradCAM_${image}.png`} alt="Grad-CAM"/>
-                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/LIME_${image}.png`} alt="Grad-CAM"/>
+                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/LIME_${image}.png`} alt="LIME"/>
                                                     <p className="bold resultText">{parseFloat(result[index]).toFixed(3)}</p>
                                                 </div>
                                             )
@@ -87,8 +87,8 @@ function Result(props) {
                                             (
                                                 <div className="resultDiv" key={index}>
                                                     <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
-                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/GradCAM_${image}.png`} alt="Grad-CAM"/>
-                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/LIME_${image}.png`} alt="Grad-CAM"/>
+                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/RCV_${image}.png`} alt="RCVs"/>
+                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/Sharp-LIME_${image}.png`} alt="Sharp-LIME"/>
                                                     <p className="bold resultText">{parseFloat(result[index]).toFixed(3)}</p>
                                                 </div>
                                             )
