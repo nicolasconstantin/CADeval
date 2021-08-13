@@ -45,7 +45,7 @@ function Result(props) {
                                     {imagePath.map((image, index) =>
                                         (
                                             <div className="resultDiv" key={index}>
-                                                <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
+                                                <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
                                                 <p className="bold resultText">{parseFloat(result[index]).toFixed(3)}</p>
                                             </div>
                                         )
@@ -65,7 +65,7 @@ function Result(props) {
                                         {imagePath.map((image, index) =>
                                             (
                                                 <div className="resultDiv" key={index}>
-                                                    <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
+                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
                                                     <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/GradCAM_${image}.png`} alt="Grad-CAM"/>
                                                     <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/LIME_${image}.png`} alt="LIME"/>
                                                     <p className="bold resultText">{parseFloat(result[index]).toFixed(3)}</p>
@@ -77,17 +77,18 @@ function Result(props) {
                                 :
                                 (
                                     <>
+                                        <p>You can see the full size image of the RCV if you click on it</p>
                                         <div className="resultDiv">
                                             <p className="bold resultP">Original zone</p>
-                                            <p className="bold resultP">RCVs</p>
+                                            <p className="bold resultPRCV">RCV</p>
                                             <p className="bold resultP">Sharp-LIME</p>
-                                            <p className="bold resultP">Prediction</p>
+                                            <p className="bold resultPPredictionRCV">Prediction</p>
                                         </div>
                                         {imagePath.map((image, index) =>
                                             (
                                                 <div className="resultDiv" key={index}>
-                                                    <img className="originalZone" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
-                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/RCV_${image}.png`} alt="RCVs"/>
+                                                    <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/${image}`} alt="original zone"/>
+                                                    <a className="resultImgRCV" href={`https://fast.hevs.ch/cadeval/${folderPath}/RCV_${image}.png`} target="_blank"><img className="test" src={`https://fast.hevs.ch/cadeval/${folderPath}/RCV_${image}.png`} alt="RCV"/></a>
                                                     <img className="resultImg" src={`https://fast.hevs.ch/cadeval/${folderPath}/Sharp-LIME_${image}.png`} alt="Sharp-LIME"/>
                                                     <p className="bold resultText">{parseFloat(result[index]).toFixed(3)}</p>
                                                 </div>

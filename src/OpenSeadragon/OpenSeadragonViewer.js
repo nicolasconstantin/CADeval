@@ -95,8 +95,8 @@ function OpenSeadragonViewer(props) {
             <div
                 id="openSeaDragon"
                 style={{
-                    height: "600px",
-                    width: "800px"
+                    width: "100%",
+                    height: "450px"
                 }}
             >
 
