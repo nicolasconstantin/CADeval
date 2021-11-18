@@ -1,22 +1,22 @@
-.ItemList{
-    list-style-type: none;
-    text-align: left;
-    padding-top: 3px;
-    margin-left: -10%;
+.ItemList {
+  list-style-type: none;
+  text-align: left;
+  padding-top: 3px;
+  margin-left: -10%;
+  margin-top: 0.5em;
 }
 
-.ItemList:hover{
-    text-decoration: underline;
-    cursor: pointer;
+.ItemList:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.CenterTitle{
-    text-align: left;
-    font-size: 20px;
+.FolderTitle {
+  text-align: left;
+  font-size: 20px;
 }
 
-.CenterTitle:hover{
-    text-decoration: underline;
-    cursor: pointer;
+.FolderTitle:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
-
